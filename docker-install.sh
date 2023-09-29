@@ -55,3 +55,8 @@ sudo ufw allow 443 comment 'Allow HTTPS Access'
 
 sudo apt update && sudo apt upgrade -y && sudo apt install -y apt-transport-https ca-certificates curl software-properties-common && curl -fsSL https://get.docker.com | sh
 
+# Verify Docker installation
+sudo docker run hello-world
+
+
+
