@@ -71,7 +71,19 @@ sudo ufw allow 80 comment 'Allow HTTP Access'
 sudo ufw allow 443 comment 'Allow HTTPS Access'
 
 
-sudo apt update && sudo apt upgrade -y && sudo apt install -y apt-transport-https ca-certificates curl software-properties-common && curl -fsSL https://get.docker.com | sh
+# Update and install Docker based on the distribution
+if is_debian; then
+    sudo apt update && sudo apt upgrade -y && sudo apt install -y apt-transport-https ca-certificates curl software-properties-common && curl -fsSL https://get.docker.com | sh
+elif is_redhat; then
+    sudo yum check-update
+    sudo yum -y update
+    sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    sudo yum install -y docker-ce docker-ce-cli containerd.io
+else
+    echo "Unsupported distribution. Exiting."
+    exit 1
+fi
 
 # Verify Docker installation
 sudo docker run hello-world
