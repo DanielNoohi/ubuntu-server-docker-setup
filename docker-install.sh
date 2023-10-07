@@ -1,18 +1,36 @@
 #!/bin/bash
 # Update and upgrade Ubuntu
+# Function to check if the system is Debian/Ubuntu-based
+is_debian() {
+    [ -f /etc/debian_version ]
+}
+
+# Function to check if the system is Red Hat-based
+is_redhat() {
+    [ -f /etc/redhat-release ]
+}
+
+# Update and upgrade based on the distribution
+if is_debian; then
     sudo apt update
     sudo apt -y upgrade
     sudo apt -y dist-upgrade
     sudo apt -y autoremove
     sleep 0.5
-    
-    # Again :D
     sudo apt -y autoclean
     sudo apt -y clean
-    sudo apt update
-    sudo apt -y upgrade
-    sudo apt -y dist-upgrade
-    sudo apt -y autoremove
+elif is_redhat; then
+    sudo yum check-update
+    sudo yum -y update
+    sudo yum -y upgrade
+    sudo yum -y autoremove
+    sleep 0.5
+    sudo yum clean all
+else
+    echo "Unsupported distribution. Exiting."
+    exit 1
+fi
+
 
 
     # Check if UFW is installed
