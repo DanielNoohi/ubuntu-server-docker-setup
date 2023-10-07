@@ -62,14 +62,14 @@ fi
 
 
 # Enable the Uncomplicated Firewall (UFW)
-    yes | sudo ufw enable
-    #sudo ufw enable
+    sudo ufw enable
 
 # Allow SSH (port 22) for remote access
-sudo ufw allow 22 comment 'Allow SSH Access'
-sudo ufw allow 80 comment 'Allow HTTP Access'
-sudo ufw allow 443 comment 'Allow HTTPS Access'
-
+    sudo ufw allow 22 comment 'Allow SSH Access'
+    sudo ufw allow 80 comment 'Allow HTTP Access'
+    sudo ufw allow 443 comment 'Allow HTTPS Access'
+    sudo ufw status
+    sleep 2
 
 # Update and install Docker based on the distribution
 if is_debian; then
