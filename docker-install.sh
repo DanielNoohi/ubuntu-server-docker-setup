@@ -62,8 +62,8 @@ fi
 
 
 # Enable the Uncomplicated Firewall (UFW)
-sudo ufw enable
-#sudo ufw enable
+    yes | sudo ufw enable
+    #sudo ufw enable
 
 # Allow SSH (port 22) for remote access
 sudo ufw allow 22 comment 'Allow SSH Access'
