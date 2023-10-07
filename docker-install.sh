@@ -66,8 +66,6 @@ fi
 
 # Allow SSH (port 22) for remote access
     sudo ufw allow 22 comment 'Allow SSH Access'
-    sudo ufw allow 80 comment 'Allow HTTP Access'
-    sudo ufw allow 443 comment 'Allow HTTPS Access'
     sudo ufw status
     sleep 2
 
