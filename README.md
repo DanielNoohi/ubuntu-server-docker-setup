@@ -10,6 +10,7 @@ Automated Ubuntu Docker Setup Script
     - _AutoClean_
     - _Clean_
 
+2. Install UFW and enable it then Open 22, 80 and 443 Ports
 
 3. Install Useful Packages:
 
